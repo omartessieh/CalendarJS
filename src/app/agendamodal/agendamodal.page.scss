@@ -1,0 +1,14 @@
+.centered-toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+
+    ion-icon {
+        zoom: 2;
+    }
+}
+
+p {
+    font-size: 20px;
+}

@@ -1,0 +1,36 @@
+<ion-content [fullscreen]="true">
+  <div class="centered-toolbar">
+    <ion-icon name="close" (click)="close()"></ion-icon>
+  </div>
+
+  <br />
+
+  <div *ngIf="size > 0">
+    <ion-list *ngFor="let event of eventData" lines="none" style="padding: 0">
+      <ion-card>
+        <ion-item
+          style="border-right: 4px solid #f1612d"
+          (click)="gopage('/single-agenda',event.id,event.section_id,event.date)"
+        >
+          <ion-label style="margin: 0">
+            <h1>{{event.course_name}}</h1>
+            <p class="pone">بهاء</p>
+            <p class="ptow">
+              <ion-icon
+                style="color: #f1612d; zoom: 1.2"
+                name="calendar-outline"
+              ></ion-icon
+              ><span> {{event.date}}</span>
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-card>
+    </ion-list>
+  </div>
+  <div
+    *ngIf="size === 0"
+    style="text-align: center; position: absolute; left: 0; right: 0"
+  >
+    <p>لا يوجد</p>
+  </div>
+</ion-content>

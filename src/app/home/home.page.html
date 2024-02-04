@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>calendertest</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="centered-container">
+    <ion-card>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-select
+            ion-label="children"
+            interface="popover"
+            placeholder="select student"
+            (ionChange)="togglechildren($event)"
+          >
+            <ion-select-option value="0">All</ion-select-option>
+            <ion-select-option
+              *ngFor="let child of children"
+              [value]="child.section_id"
+              >{{ child.full_name}}</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </div>
+  <br />
+
+  <div class="calendar">
+    <div class="header">
+      <ion-button (click)="prevMonth()">&lt;</ion-button>
+      <h2>{{ currentMonth }}</h2>
+      <ion-button (click)="nextMonth()">&gt;</ion-button>
+    </div>
+    <div class="days">
+      <div
+        *ngFor="let day of calendarDays"
+        class="day"
+        (click)="selectDate(day)"
+        [class.selected]="isSelected(day)"
+        [class.event]="hasEvent(day)"
+        [class.highlighted]="isHighlighted(day)"
+      >
+        {{ day }}
+      </div>
+    </div>
+  </div>
+  <h2>{{ currentMonthNumber }}</h2>
+  <ion-list *ngIf="EventsSize > 0">
+    <ion-item *ngFor="let event of selectedEvents"> {{ event }} </ion-item>
+  </ion-list>
+</ion-content>
